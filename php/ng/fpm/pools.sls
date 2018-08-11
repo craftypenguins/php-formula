@@ -13,6 +13,8 @@ include:
   - php.ng.fpm.service
   - php.ng.fpm.pools_config
 
+#Test for filled array before extending
+{% if pool_states %}
 extend:
   php_fpm_service:
     service:
@@ -20,3 +22,4 @@ extend:
         {{ file_requisites(pool_states) }}
       - require:
         {{ file_requisites(pool_states) }}
+{% endif %}
